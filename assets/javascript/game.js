@@ -78,12 +78,12 @@ for (i=0; i<characters.length; i++){
 
 
 //CHOOSE A CHARACTER BY CLICKING IMAGE
-
+//START OF CHARACTER CLICK EVENT
 $(".character").click(function(){
 
     if(!myCharacter) {
         myCharacter = $(this).data("name");
-        console.log(myCharacter);
+        // console.log(myCharacter);
 
         //mark my enemies and empty them from character selection pane
         $(".character").each(function(){ 
@@ -98,43 +98,27 @@ $(".character").click(function(){
         $(this).attr("data-defender", "defender");
         $("#defenderrow").append($(this));
         $("#enemyselectionrow").detach();
-        console.log(defender);
-
-        //mark my enemies and empty them from character selection pane
-        // $(".character").each(function(){ 
-        //     if ($(this).data("name") != myCharacter || $(this).data("name") != defender){
-        //         $(this).detach();
-        //     }
-        // });
+        // console.log(defender);
     }
 
 
+}
+);
+//END OF CHARACTER CLICK EVENT
 
-
+//START OF ATTACK BUTTON CLICK EVENT    
+$("#attackbutton").click(function(){
+    // console.log(myCharacter);
+    // console.log(defender);
+    //mycharacter attacks defender (their health decreases by the amount of my attack power)
+    console.log(myCharacter.ancestor());
 
 
 
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 );
-
-
+//END OF ATTACK BUTTON CLICK EVENT
 
 
 
