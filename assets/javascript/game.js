@@ -101,7 +101,6 @@ $(".character").click(function(){
         // console.log(defender);
     }
 
-
 }
 );
 //END OF CHARACTER CLICK EVENT
@@ -111,8 +110,10 @@ $("#attackbutton").click(function(){
     console.log(myCharacter);
     console.log(defender);
     //mycharacter attacks defender (their health decreases by the amount of my attack power)
-
-    console.log(myCharacter.data("attackpower"));
+    for (i in myCharacter) {
+        console.log(i);
+    }
+    console.log(myCharacter["data-attackpower"]);
 
 
 
