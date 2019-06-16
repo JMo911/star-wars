@@ -82,19 +82,19 @@ for (i=0; i<characters.length; i++){
 $(".character").click(function(){
 
     if(!myCharacter) {
-        myCharacter = $(this).data("name");
-        // console.log(myCharacter);
+        myCharacter = characters[$(this).data("position")];
+         console.log(myCharacter);
 
         //mark my enemies and empty them from character selection pane
         $(".character").each(function(){ 
-            if ($(this).data("name") != myCharacter){
+            if (characters[$(this).data("position")] != myCharacter){
                 $(this).attr("data-enemy", "enemy");
                 $(this).detach();
                 $("#enemyselectionrow").append($(this));
             }
         });
     } else if (myCharacter) {
-        defender = $(this).data("name");
+        defender = characters[$(this).data("position")];
         $(this).attr("data-defender", "defender");
         $("#defenderrow").append($(this));
         $("#enemyselectionrow").detach();
@@ -111,7 +111,7 @@ $("#attackbutton").click(function(){
     // console.log(myCharacter);
     // console.log(defender);
     //mycharacter attacks defender (their health decreases by the amount of my attack power)
-    console.log(myCharacter.ancestor());
+    console.log();
 
 
 
