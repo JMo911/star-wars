@@ -83,7 +83,7 @@ $(".character").click(function(){
 
     if(!myCharacter) {
         myCharacter = characters[$(this).data("position")];
-         console.log(myCharacter);
+        //  console.log(myCharacter);
 
         //mark my enemies and empty them from character selection pane
         $(".character").each(function(){ 
@@ -98,7 +98,7 @@ $(".character").click(function(){
         $(this).attr("data-defender", "defender");
         $("#defenderrow").append($(this));
         $("#enemyselectionrow").detach();
-        console.log(defender);
+        // console.log(defender);
     }
 
 
@@ -108,10 +108,11 @@ $(".character").click(function(){
 
 //START OF ATTACK BUTTON CLICK EVENT    
 $("#attackbutton").click(function(){
-    // console.log(myCharacter);
-    // console.log(defender);
+    console.log(myCharacter);
+    console.log(defender);
     //mycharacter attacks defender (their health decreases by the amount of my attack power)
-    console.log();
+
+    console.log(myCharacter.data("attackpower"));
 
 
 
