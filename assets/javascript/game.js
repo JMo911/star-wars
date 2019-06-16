@@ -98,7 +98,7 @@ $(".character").click(function(){
         $(this).attr("data-defender", "defender");
         $("#defenderrow").append($(this));
         $("#enemyselectionrow").detach();
-        // console.log(defender);
+        console.log(defender);
     }
 
 
