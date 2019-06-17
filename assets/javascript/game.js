@@ -125,7 +125,7 @@ $("#attackbutton").click(function(){
     }
     else if (myCharacter["data-healthpoints"] <= 0){
         gameMessages = "You lost!";
-        $("#gameMessagesDisplay").hmtl(gameMessages);
+        // $("#gameMessagesDisplay").hmtl(gameMessages);
     }
 
 
