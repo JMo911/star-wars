@@ -7,12 +7,12 @@ var characters = [
         "data-name": "anakin",
         "data-healthpoints": 100,
         "data-attackpower": 15,
-        "data-counterattackpower": 5,
+        "data-counterattackpower": 10,
         "data-position": 0
     },
     {
         "data-name": "darthmaul",
-        "data-healthpoints": 180,
+        "data-healthpoints": 140,
         "data-attackpower": 10,
         "data-counterattackpower": 25,
         "data-position": 1
@@ -28,7 +28,7 @@ var characters = [
         "data-name": "obiwankenobi",
         "data-healthpoints": 120,
         "data-attackpower": 15,
-        "data-counterattackpower": 10,
+        "data-counterattackpower": 15,
         "data-position": 3
     }
 ]
