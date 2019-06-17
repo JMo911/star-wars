@@ -1,33 +1,34 @@
 $(document).ready(function(){
 //set initial states
 var myCharacter="";
+var gameMessages=""
 var characters = [
     {
         "data-name": "anakin",
         "data-healthpoints": 100,
-        "data-attackpower": 10,
-        "data-counterattackpower": 15,
+        "data-attackpower": 15,
+        "data-counterattackpower": 5,
         "data-position": 0
     },
     {
         "data-name": "darthmaul",
         "data-healthpoints": 180,
         "data-attackpower": 10,
-        "data-counterattackpower": 15,
+        "data-counterattackpower": 25,
         "data-position": 1
     },
     {
         "data-name": "jarjarbinks",
         "data-healthpoints": 90,
-        "data-attackpower": 10,
-        "data-counterattackpower": 15,
+        "data-attackpower": 5,
+        "data-counterattackpower": 20,
         "data-position": 2
     },
     {
         "data-name": "obiwankenobi",
         "data-healthpoints": 120,
-        "data-attackpower": 10,
-        "data-counterattackpower": 15,
+        "data-attackpower": 15,
+        "data-counterattackpower": 10,
         "data-position": 3
     }
 ]
@@ -83,6 +84,7 @@ $(".character").click(function(){
 
     if(!myCharacter) {
         myCharacter = characters[$(this).data("position")];
+        $(this).addClass("myCharacter");
         //  console.log(myCharacter);
 
         //mark my enemies and empty them from character selection pane
@@ -108,16 +110,35 @@ $(".character").click(function(){
 
 //START OF ATTACK BUTTON CLICK EVENT    
 $("#attackbutton").click(function(){
-    // console.log(myCharacter);
-    // console.log(defender);
+    
     //mycharacter attacks defender (their health decreases by the amount of my attack power)
-    
-    
-    defender["data-healthpoints"] = defender["data-healthpoints"]-myCharacter["data-attackpower"];
-    $(".defender"["data-healthpoints"]).text(defender["data-healthpoints"]);
+    if (defender["data-healthpoints"] <= 0){
+        // $("#enemyselectionrow").html("Test");
+        $("#defenderrow").empty();
+        // $(".character").each(function(){ 
+        //     if (characters[$(this).data("position")] != myCharacter && characters[$(this).data("defender")] != "defender"){
+        //         $("#enemyselectionrow").append($(this));
+                
+        //     }
+        // });
+    }
+    else if (myCharacter["data-healthpoints"] <= 0){
+        gameMessages = "You lost!";
+        $("#gameMessagesDisplay").hmtl(gameMessages);
+    }
 
-    renderCharacters("#defenderrow", defender);
-$(".defender > p:eq(0)").text(defender["data-healthpoints"]);
+
+
+
+    else if(defender["data-healthpoints"] > 0 && myCharacter["data-healthpoints"] > 0) {
+        defender["data-healthpoints"] = -myCharacter["data-attackpower"]+defender["data-healthpoints"];
+        $(".defender"["data-healthpoints"]).text(defender["data-healthpoints"]);
+        $(".defender > p:eq(0)").text(defender["data-healthpoints"]);
+        myCharacter["data-healthpoints"] = -defender["data-counterattackpower"]+myCharacter["data-healthpoints"];
+        $(".myCharacer"["data-healthpoints"]).text(myCharacter["data-healthpoints"]);
+        $(".myCharacter > p:eq(0)").text(myCharacter["data-healthpoints"]);
+    }   
+
 
 }
 );
