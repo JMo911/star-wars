@@ -132,6 +132,7 @@ $("#attackbutton").click(function(){
 
 
     else if(defender["data-healthpoints"] > 0 && myCharacter["data-healthpoints"] > 0) {
+        myCharacter["data-attackpower"] = Math.ceil(myCharacter["data-attackpower"]*1.5);
         defender["data-healthpoints"] = -myCharacter["data-attackpower"]+defender["data-healthpoints"];
         $(".defender"["data-healthpoints"]).text(defender["data-healthpoints"]);
         $(".defender > p:eq(0)").text(defender["data-healthpoints"]);
