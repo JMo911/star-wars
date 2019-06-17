@@ -43,6 +43,7 @@ var imagesources=[
 var defender="";
 var characterDiv;
 var characterimg;
+var detachedEnemies;
 //Make sure all of my images have the associated character data
 
 function renderCharacters(divLocation, characters){ 
@@ -100,7 +101,7 @@ $(".character").click(function(){
         $(this).attr("data-defender", "defender");
         $(this).addClass("defender");
         $("#defenderrow").append($(this));
-        $("#enemyselectionrow").detach();
+        detachedEnemies = $("#enemyselectionrow > div").detach();
         // console.log(defender);
     }
 
@@ -113,7 +114,7 @@ $("#attackbutton").click(function(){
     
     //mycharacter attacks defender (their health decreases by the amount of my attack power)
     if (defender["data-healthpoints"] <= 0){
-        // $("#enemyselectionrow").html("Test");
+        $("#enemyselectionrow").append(detachedEnemies);
         $("#defenderrow").empty();
         // $(".character").each(function(){ 
         //     if (characters[$(this).data("position")] != myCharacter && characters[$(this).data("defender")] != "defender"){
