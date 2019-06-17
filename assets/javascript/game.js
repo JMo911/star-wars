@@ -11,21 +11,21 @@ var characters = [
     },
     {
         "data-name": "darthmaul",
-        "data-healthpoints": 100,
+        "data-healthpoints": 180,
         "data-attackpower": 10,
         "data-counterattackpower": 15,
         "data-position": 1
     },
     {
         "data-name": "jarjarbinks",
-        "data-healthpoints": 100,
+        "data-healthpoints": 90,
         "data-attackpower": 10,
         "data-counterattackpower": 15,
         "data-position": 2
     },
     {
         "data-name": "obiwankenobi",
-        "data-healthpoints": 100,
+        "data-healthpoints": 120,
         "data-attackpower": 10,
         "data-counterattackpower": 15,
         "data-position": 3
@@ -46,7 +46,7 @@ var characterimg;
 
 function renderCharacters(divLocation, characters){ 
 for (i=0; i<characters.length; i++){
-    characterDiv=$("<div>");
+    characterDiv=$("<div>").html('<p>' + characters[i]["data-healthpoints"] + '</p>');
     characterDiv.attr(characters[i]);
     characterDiv.addClass("character");
     characterimg=$("<img>");
@@ -96,6 +96,7 @@ $(".character").click(function(){
     } else if (myCharacter) {
         defender = characters[$(this).data("position")];
         $(this).attr("data-defender", "defender");
+        $(this).addClass("defender");
         $("#defenderrow").append($(this));
         $("#enemyselectionrow").detach();
         // console.log(defender);
@@ -107,16 +108,16 @@ $(".character").click(function(){
 
 //START OF ATTACK BUTTON CLICK EVENT    
 $("#attackbutton").click(function(){
-    console.log(myCharacter);
-    console.log(defender);
+    // console.log(myCharacter);
+    // console.log(defender);
     //mycharacter attacks defender (their health decreases by the amount of my attack power)
-    for (i in myCharacter) {
-        console.log(i);
-    }
-    console.log(myCharacter["data-attackpower"]);
+    
+    
+    defender["data-healthpoints"] = defender["data-healthpoints"]-myCharacter["data-attackpower"];
+    $(".defender"["data-healthpoints"]).text(defender["data-healthpoints"]);
 
-
-
+    renderCharacters("#defenderrow", defender);
+$(".defender > p:eq(0)").text(defender["data-healthpoints"]);
 
 }
 );
